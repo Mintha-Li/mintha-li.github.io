@@ -17,6 +17,9 @@
 </blockquote>
 <p>总之，加油吧！ヽ(✿ﾟ▽ﾟ)ノ</p>
 ]]></content>
+      <categories>
+        <category>网站</category>
+      </categories>
       <tags>
         <tag>网站相关</tag>
       </tags>
@@ -26,7 +29,7 @@
     <url>/2022/06/27/resources-share/</url>
     <content><![CDATA[<p>开一个新文档，记录一下自己学习的一些经历，顺便也是为了方便<del>和我一样苦逼的</del>同济机械的学生。</p>
 <p>分享的资料来源于老师分享的课程PPT以及自己总结的笔记，希望对你有用哈o(<em>￣▽￣</em>)ブ</p>
-<p>资料主要适用于理科试验班，工科试验班（智能化制造类）及机械设计制造及其自动化专业的同学们。</p>
+<p>资料主要适用于<strong>理科试验班</strong>，<strong>工科试验班（智能化制造类）</strong>及<strong>机械设计制造及其自动化专业</strong>的同学们。</p>
 <span id="more"></span>
 
 <h2 id="📍当前更新进度"><a href="#📍当前更新进度" class="headerlink" title="📍当前更新进度"></a>📍当前更新进度</h2><hr>
@@ -42,22 +45,21 @@
 </ul>
 <p>大一下</p>
 <ul>
-<li><input disabled="" type="checkbox"> 高等数学（A）下</li>
-<li><input disabled="" type="checkbox"> 理论力学1</li>
-<li><input disabled="" type="checkbox"> 大学物理学（A）上</li>
+<li><input checked="" disabled="" type="checkbox"> 高等数学（A）下</li>
+<li><input checked="" disabled="" type="checkbox"> 理论力学1</li>
+<li><input checked="" disabled="" type="checkbox"> 大学物理学（A）上</li>
 <li><input checked="" disabled="" type="checkbox"> 物理实验（下）</li>
-<li><input disabled="" type="checkbox"> 普通化学实验</li>
 </ul>
 <p>大二上</p>
 <ul>
-<li><input disabled="" type="checkbox"> 线性代数（B）</li>
-<li><input disabled="" type="checkbox"> 大学物理学（B）下</li>
-<li><input disabled="" type="checkbox"> 理论力学2</li>
-<li><input disabled="" type="checkbox"> 材料力学（B）</li>
-<li><input disabled="" type="checkbox"> C&#x2F;C++程序设计</li>
-<li><input disabled="" type="checkbox"> 电工学（电工技术）</li>
-<li><input disabled="" type="checkbox"> 机械原理</li>
-<li><input disabled="" type="checkbox"> 机械工程材料</li>
+<li><input checked="" disabled="" type="checkbox"> 线性代数（B）</li>
+<li><input checked="" disabled="" type="checkbox"> 大学物理学（B）下</li>
+<li><input checked="" disabled="" type="checkbox"> 理论力学2</li>
+<li><input checked="" disabled="" type="checkbox"> 材料力学（B）</li>
+<li><input checked="" disabled="" type="checkbox"> C&#x2F;C++程序设计</li>
+<li><input checked="" disabled="" type="checkbox"> 电工学（电工技术）</li>
+<li><input checked="" disabled="" type="checkbox"> 机械原理</li>
+<li><input checked="" disabled="" type="checkbox"> 机械工程材料</li>
 </ul>
 <p>大二下</p>
 <ul>
@@ -68,14 +70,14 @@
 <li><input disabled="" type="checkbox"> 机械原理课程设计</li>
 </ul>
 <hr>
-<h2 id="1️⃣大一上"><a href="#1️⃣大一上" class="headerlink" title="1️⃣大一上"></a>1️⃣大一上</h2><h3 id="高等数学（A）上"><a href="#高等数学（A）上" class="headerlink" title="高等数学（A）上"></a>高等数学（A）上</h3><p>包括高数(A)的PPT以及同济高数同步网站（<a href="https://gaoshutongbu.tongji.edu.cn/%EF%BC%89%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%83%E4%B9%A0%E3%80%82">https://gaoshutongbu.tongji.edu.cn/）上的一些练习。</a></p>
+<h2 id="1️⃣大一上"><a href="#1️⃣大一上" class="headerlink" title="1️⃣大一上"></a>1️⃣大一上</h2><h3 id="高等数学（A）上"><a href="#高等数学（A）上" class="headerlink" title="高等数学（A）上"></a>高等数学（A）上</h3><p>包括高数(A)的PPT以及<a href="https://gaoshutongbu.tongji.edu.cn/">同济高数同步网站</a>上的一些练习。</p>
 <p>此部分主要适用于理科试验班的同学，当然其他高数（B）的同学也可以借鉴一下。</p>
 <p>🔗获取链接:</p>
 <blockquote>
 <p><a href="https://wwb.lanzout.com/b03d4bigb">https://wwb.lanzout.com/b03d4bigb</a><br>密码:e236</p>
 </blockquote>
 <h3 id="普通化学原理"><a href="#普通化学原理" class="headerlink" title="普通化学原理"></a>普通化学原理</h3><p>包括普通化学原理的一些PPT。</p>
-<p>此部分主要适用于理科试验班的同学，当然其他如普通化学的同学也可以借鉴一下。</p>
+<p>此部分主要适用于理科试验班的同学，当然学习普通化学的同学也可以借鉴一下。</p>
 <p>P.S.PPT来源于范丽岩教授，老师真的人很好，认真学真滴可以收获很多。</p>
 <p>🔗获取链接:</p>
 <blockquote>
@@ -94,16 +96,93 @@
 <blockquote>
 <p><a href="https://wwb.lanzout.com/b03d4blsb">https://wwb.lanzout.com/b03d4blsb</a><br>密码:697d</p>
 </blockquote>
+<h2 id="2️⃣大一下"><a href="#2️⃣大一下" class="headerlink" title="2️⃣大一下"></a>2️⃣大一下</h2><hr>
+<h3 id="高等数学（A）下"><a href="#高等数学（A）下" class="headerlink" title="高等数学（A）下"></a>高等数学（A）下</h3><p>包括高数(A)下的PPT、一些练习和数学竞赛的往年试卷（共三套）。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4cjxa">https://wwb.lanzout.com/b03d4cjxa</a><br>密码:2vhh</p>
+</blockquote>
+<h3 id="大学物理学（A）上"><a href="#大学物理学（A）上" class="headerlink" title="大学物理学（A）上"></a>大学物理学（A）上</h3><p>包括大学物理学(A)上的PPT和活页练习册答案。</p>
+<p>此外还有期末复习资料，因为老师不让外传，所以有需要的小伙伴还是麻烦私我微信吧（联系方式在文章最后）。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4ckzi">https://wwb.lanzout.com/b03d4ckzi</a><br>密码:i2w8</p>
+</blockquote>
+<h3 id="理论力学1"><a href="#理论力学1" class="headerlink" title="理论力学1"></a>理论力学1</h3><p>包括理论力学1的PPT，往年期末试题和部分活页练习册的答案。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d47nlc">https://wwb.lanzout.com/b03d47nlc</a><br>密码:1b8v</p>
+</blockquote>
+<h2 id="3️⃣大二上"><a href="#3️⃣大二上" class="headerlink" title="3️⃣大二上"></a>3️⃣大二上</h2><hr>
+<h3 id="线性代数（B）"><a href="#线性代数（B）" class="headerlink" title="线性代数（B）"></a>线性代数（B）</h3><p>包括线性代数的PPT。</p>
+<p><del>（资源属实少的可怜，希望哪位大佬可以联系下我补充一下）</del></p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dm2d">https://wwb.lanzout.com/b03d4dm2d</a><br>密码:4sib</p>
+</blockquote>
+<h3 id="大学物理学（B）下"><a href="#大学物理学（B）下" class="headerlink" title="大学物理学（B）下"></a>大学物理学（B）下</h3><p>包括大学物理学(B)上的PPT、MOOC个人解答，活页练习册答案，以及我自己做的笔记。</p>
+<p>此外还有期末复习资料，因为老师不让外传，所以有需要的小伙伴还是麻烦私我微信吧（联系方式在文章最后）。</p>
+<p>部分展示：</p>
+<p><img src="/../images/rs-wl1.png" alt="image-20220627204424660"></p>
+<p><img src="/../images/rs-wl2.png" alt="image-20220627204623959"></p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dmef">https://wwb.lanzout.com/b03d4dmef</a><br>密码:18wi</p>
+</blockquote>
+<h3 id="理论力学2"><a href="#理论力学2" class="headerlink" title="理论力学2"></a>理论力学2</h3><p>包括理论力学2的PPT，期末样卷和活页练习册的答案。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d47nmd">https://wwb.lanzout.com/b03d47nmd</a><br>密码:hghl</p>
+</blockquote>
+<h3 id="材料力学（B）"><a href="#材料力学（B）" class="headerlink" title="材料力学（B）"></a>材料力学（B）</h3><p>包括课程PPT，教材，参考书，历年全真试题，习题全解集，活页作业答案，材料力学实验报告书</p>
+<p>展示：</p>
+<p><img src="/../images/rs-cllx1.png" alt="image-20220627212021271"></p>
+<p><strong>注意</strong>:由于蓝奏云限制，所以下述链接只有部分文件，需要的话还是麻烦联系我获取啦。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4drpg">https://wwb.lanzout.com/b03d4drpg</a><br>密码:8a3j</p>
+</blockquote>
+<h3 id="C-x2F-C-程序设计"><a href="#C-x2F-C-程序设计" class="headerlink" title="C&#x2F;C++程序设计"></a>C&#x2F;C++程序设计</h3><p>包括课件，SPOC单元作业参考答案，课后习题解答，期中和期末复习PPT</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dtzi">https://wwb.lanzout.com/b03d4dtzi</a><br>密码:95yo</p>
+</blockquote>
+<p>P.S.顺便说一下，我的GitHub仓库里面有源码，需要的话自己clone一下就行</p>
+<h3 id="电工学（电工技术）"><a href="#电工学（电工技术）" class="headerlink" title="电工学（电工技术）"></a>电工学（电工技术）</h3><p>包括电工学（电工技术）的PPT</p>
+<p>实验报告因为涉及个人信息，需要的话还是联系我吧</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dvrc">https://wwb.lanzout.com/b03d4dvrc</a><br>密码:9nnk</p>
+</blockquote>
+<h3 id="机械原理"><a href="#机械原理" class="headerlink" title="机械原理"></a>机械原理</h3><p>因为老师根本不分享PPT，而且老师上课基本上就是PPT Reader，所以这里就没有啥好资源了。</p>
+<p>不过为了不让这里显得太空，我还是放个课本吧</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dwef">https://wwb.lanzout.com/b03d4dwef</a><br>密码:2vn1</p>
+</blockquote>
+<h3 id="机械工程材料"><a href="#机械工程材料" class="headerlink" title="机械工程材料"></a>机械工程材料</h3><p>机械专业里面最离谱的课程，不是说老师讲的不好，而是老师要求实在是很高<del>（据说是机械类专业里挂科最多的课程了）</del>，建议认真听课，认真做笔记。</p>
+<p>这里我分享一下两位老师的PPT，及我自己的总结笔记和作业详解，希望对你有用。</p>
+<p>笔记展示：</p>
+<p><img src="/../images/rs-jxgccl.png" alt="image-20220627214350148"></p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4dxmj">https://wwb.lanzout.com/b03d4dxmj</a><br>密码:cocl</p>
+</blockquote>
+<h2 id="4️⃣大二下"><a href="#4️⃣大二下" class="headerlink" title="4️⃣大二下"></a>4️⃣大二下</h2><hr>
+<p>本学期还没结束，先不分享啦，真有需要联系我即可</p>
 <h2 id="❤️写在后面"><a href="#❤️写在后面" class="headerlink" title="❤️写在后面"></a>❤️写在后面</h2><hr>
 <p>以上资源来自于老师分享及自己整理，希望对你有帮助，不过能看到这个网站也挺不容易的哈。</p>
 <p>如果有啥没有的，欢迎询问嘞，联系方式如下：</p>
 <p>微信：</p>
 <p><img src="/../images/wechat.jpg"></p>
 ]]></content>
+      <categories>
+        <category>资料分享</category>
+      </categories>
       <tags>
-        <tag>资源分享</tag>
         <tag>机械资料</tag>
         <tag>同济大学</tag>
+        <tag>资料分享</tag>
       </tags>
   </entry>
 </search>
