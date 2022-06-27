@@ -4,6 +4,7 @@
     <title>新的开始</title>
     <url>/2022/01/03/hello-world/</url>
     <content><![CDATA[<p><em>Hello World!</em></p>
+<p>🎉我的网站建立啦！</p>
 <span id="more"></span>
 
 <h2 id="2022-6-26"><a href="#2022-6-26" class="headerlink" title="2022.6.26"></a>2022.6.26</h2><hr>
@@ -16,11 +17,93 @@
 </blockquote>
 <p>总之，加油吧！ヽ(✿ﾟ▽ﾟ)ノ</p>
 ]]></content>
-      <categories>
-        <category>建站</category>
-      </categories>
       <tags>
-        <tag>hexo</tag>
+        <tag>网站相关</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>同济大学资源分享（机械）</title>
+    <url>/2022/06/27/resources-share/</url>
+    <content><![CDATA[<p>开一个新文档，记录一下自己学习的一些经历，顺便也是为了方便<del>和我一样苦逼的</del>同济机械的学生。</p>
+<p>分享的资料来源于老师分享的课程PPT以及自己总结的笔记，希望对你有用哈o(<em>￣▽￣</em>)ブ</p>
+<p>资料主要适用于理科试验班，工科试验班（智能化制造类）及机械设计制造及其自动化专业的同学们。</p>
+<span id="more"></span>
+
+<h2 id="📍当前更新进度"><a href="#📍当前更新进度" class="headerlink" title="📍当前更新进度"></a>📍当前更新进度</h2><hr>
+<blockquote>
+<p>先列个单子，慢慢更新，<del>咕咕咕</del></p>
+</blockquote>
+<p>大一上</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> 高等数学（A）上</li>
+<li><input checked="" disabled="" type="checkbox"> 普通化学原理</li>
+<li><input checked="" disabled="" type="checkbox"> 物理实验（上）</li>
+<li><input checked="" disabled="" type="checkbox"> 专业导论（智能化制造类）</li>
+</ul>
+<p>大一下</p>
+<ul>
+<li><input disabled="" type="checkbox"> 高等数学（A）下</li>
+<li><input disabled="" type="checkbox"> 理论力学1</li>
+<li><input disabled="" type="checkbox"> 大学物理学（A）上</li>
+<li><input checked="" disabled="" type="checkbox"> 物理实验（下）</li>
+<li><input disabled="" type="checkbox"> 普通化学实验</li>
+</ul>
+<p>大二上</p>
+<ul>
+<li><input disabled="" type="checkbox"> 线性代数（B）</li>
+<li><input disabled="" type="checkbox"> 大学物理学（B）下</li>
+<li><input disabled="" type="checkbox"> 理论力学2</li>
+<li><input disabled="" type="checkbox"> 材料力学（B）</li>
+<li><input disabled="" type="checkbox"> C&#x2F;C++程序设计</li>
+<li><input disabled="" type="checkbox"> 电工学（电工技术）</li>
+<li><input disabled="" type="checkbox"> 机械原理</li>
+<li><input disabled="" type="checkbox"> 机械工程材料</li>
+</ul>
+<p>大二下</p>
+<ul>
+<li><input disabled="" type="checkbox"> 概率论与数理统计</li>
+<li><input disabled="" type="checkbox"> 电工学（电子技术）</li>
+<li><input disabled="" type="checkbox"> 互换性和技术测量</li>
+<li><input disabled="" type="checkbox"> 机械设计</li>
+<li><input disabled="" type="checkbox"> 机械原理课程设计</li>
+</ul>
+<hr>
+<h2 id="1️⃣大一上"><a href="#1️⃣大一上" class="headerlink" title="1️⃣大一上"></a>1️⃣大一上</h2><h3 id="高等数学（A）上"><a href="#高等数学（A）上" class="headerlink" title="高等数学（A）上"></a>高等数学（A）上</h3><p>包括高数(A)的PPT以及同济高数同步网站（<a href="https://gaoshutongbu.tongji.edu.cn/%EF%BC%89%E4%B8%8A%E7%9A%84%E4%B8%80%E4%BA%9B%E7%BB%83%E4%B9%A0%E3%80%82">https://gaoshutongbu.tongji.edu.cn/）上的一些练习。</a></p>
+<p>此部分主要适用于理科试验班的同学，当然其他高数（B）的同学也可以借鉴一下。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4bigb">https://wwb.lanzout.com/b03d4bigb</a><br>密码:e236</p>
+</blockquote>
+<h3 id="普通化学原理"><a href="#普通化学原理" class="headerlink" title="普通化学原理"></a>普通化学原理</h3><p>包括普通化学原理的一些PPT。</p>
+<p>此部分主要适用于理科试验班的同学，当然其他如普通化学的同学也可以借鉴一下。</p>
+<p>P.S.PPT来源于范丽岩教授，老师真的人很好，认真学真滴可以收获很多。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4bj9a">https://wwb.lanzout.com/b03d4bj9a</a><br>密码:9dti</p>
+</blockquote>
+<h3 id="物理实验"><a href="#物理实验" class="headerlink" title="物理实验"></a>物理实验</h3><p>包括物理实验（上）和物理实验（下）报告册的答案，资源比较老旧，不过还是可以参考的。</p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4bkgd">https://wwb.lanzout.com/b03d4bkgd</a><br>密码:1dnm</p>
+</blockquote>
+<h3 id="专业导论（智能化制造类）"><a href="#专业导论（智能化制造类）" class="headerlink" title="专业导论（智能化制造类）"></a>专业导论（智能化制造类）</h3><p>包括各个讲座的课后思考题答案，来自于学长学姐们呕心沥血整理，期末考试会有用的。</p>
+<p>P.S.我也想不明白为什么智造大类的专业导论要交论文还要考试，无语。</p>
+<p>展示：</p>
+<p><img src="/../images/rs-1.png" alt="rs-1"></p>
+<p>🔗获取链接:</p>
+<blockquote>
+<p><a href="https://wwb.lanzout.com/b03d4blsb">https://wwb.lanzout.com/b03d4blsb</a><br>密码:697d</p>
+</blockquote>
+<h2 id="❤️写在后面"><a href="#❤️写在后面" class="headerlink" title="❤️写在后面"></a>❤️写在后面</h2><hr>
+<p>以上资源来自于老师分享及自己整理，希望对你有帮助，不过能看到这个网站也挺不容易的哈。</p>
+<p>如果有啥没有的，欢迎询问嘞，联系方式如下：</p>
+<p>微信：</p>
+<p><img src="/../images/wechat.jpg"></p>
+]]></content>
+      <tags>
+        <tag>资源分享</tag>
+        <tag>机械资料</tag>
+        <tag>同济大学</tag>
       </tags>
   </entry>
 </search>
