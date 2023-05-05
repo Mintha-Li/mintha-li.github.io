@@ -1,92 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>利用MATLAB对三自由度机械臂系统进行仿真</title>
-    <url>/2022/09/20/course-exercise-of-mechanical-principle/</url>
-    <content><![CDATA[<p>本篇文章主要讲述利用MATLAB Simulink中的Simscape Multibody（SimMechanics）模块对三自由度机械臂系统进行仿真。适用于同济大学机械原理课程设计课程（至少我那阵是做这个）。</p>
-<span id="more"></span>
-
-<h2 id="📓题目"><a href="#📓题目" class="headerlink" title="📓题目"></a>📓题目</h2><p>在 MATLAB &#x2F; Multibody 环境中，实现 3 自由度机械臂运动仿真。</p>
-<p>具体要求： </p>
-<ol>
-<li>机械臂的 3 个关节均为转动副。基础坐标系的方向如下图所示，但基础坐 标系的原点位置可以任意选定。<strong>初始时刻</strong>第 1 个转动副的轴线沿基础坐标系 z 轴，第 2、3 个转动副轴线均沿基础坐标系 x 轴。</li>
-</ol>
-<p><img src="/../images/cemp-question.png"></p>
-<ol start="2">
-<li><p>机械臂的杆件结构参数（包括杆件长度）自由设计；所建立的 Multibody 模型（可以在 Multibody 建模，也可以利用其它三维设计软件的 step 格式）要求 包含机械臂关节和末端执行器的<strong>细节结构</strong>。 </p>
-</li>
-<li><p>机械臂在初始时刻的位置姿态自行确定；经过 5 秒，机械臂末端执行器沿<strong>直线</strong>运动到目标点：x&#x3D;0.5m，y&#x3D;0.6m，z&#x3D;1.3m；5 秒之后，机械臂停留在目标点。</p>
-</li>
-</ol>
-<h2 id="1️⃣机械臂仿真内容介绍"><a href="#1️⃣机械臂仿真内容介绍" class="headerlink" title="1️⃣机械臂仿真内容介绍"></a>1️⃣机械臂仿真内容介绍</h2><p>本题要求为：机械臂在初始时刻姿态自行确定；经过5s机械臂末端执行器沿直线运动到目标点x&#x3D;0.5m、y&#x3D;0.6m、z&#x3D;1.3m，5s之后，机械臂停留在目标点。</p>
-<p>为实现上述要求，相关解决方式及主要模块功能如下：</p>
-<ol>
-<li>利用SolidWorks建立机械臂模型，并导出step格式，用File Solid模块导入到MATLAB中，其中，主要杆件的相关结构参数如下：</li>
-</ol>
-<center><em>表1  Multibody（SimMechanics）模型杆件相关结构参数</em></center>
-
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>数值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>转动副2回转中心到转动副1的距离L1</td>
-<td>0.3m</td>
-</tr>
-<tr>
-<td>转动副2、3之间的距离L2</td>
-<td>0.7m</td>
-</tr>
-<tr>
-<td>转动副3回转中心到夹持端夹持中心的距离L3</td>
-<td>0.7m</td>
-</tr>
-</tbody></table>
-<ol start="2">
-<li><p>利用坐标变换（Rigid Transform）模块调整各杆件位置，机械臂初始位置为x&#x3D;0，y&#x3D;1.4m，z&#x3D;0.3m；修改各转动副（Revolute Joint）模块参数，添加信号输入、输出端口，并连接PID模块以实现位置控制。</p>
-</li>
-<li><p>根据位置方程计算得位置反解函数，利用MATLAB Function模块编写运动学反解程序；利用Fcn模块、Clock时钟模块和Switch模块输入x，y，z与时钟变量u的关系，并实现运动状态的切换。</p>
-</li>
-<li><p>调试PID参数，以获得更加平稳、更接近直线轨迹的运动。</p>
-</li>
-</ol>
-<h2 id="2️⃣机械臂仿真相关图片"><a href="#2️⃣机械臂仿真相关图片" class="headerlink" title="2️⃣机械臂仿真相关图片"></a>2️⃣机械臂仿真相关图片</h2><p><img src="/../images/cemp-an1.png" alt="img"></p>
-<center><em>图1  Multibody（SimMechanics）模型图</em></center>
-
-<p><img src="/../images/cemp-an2.png" alt="image-20220920224403685"></p>
-<center><em>图2  机械臂初始时刻截图</em></center>
-
-<p><img src="/../images/cemp-an3.png" alt="image-20220920225138009"></p>
-<center><em>图3  机械臂运动过程中截图</em></center>
-
-<p><img src="/../images/cemp-an4.png" alt="image-20220920225257011"></p>
-<center><em>图4  机械臂到达目标点截图</em></center>
-
-<h2 id="3️⃣MATLAB程序片段"><a href="#3️⃣MATLAB程序片段" class="headerlink" title="3️⃣MATLAB程序片段"></a>3️⃣MATLAB程序片段</h2><h3 id="3-1-机械臂位置反解"><a href="#3-1-机械臂位置反解" class="headerlink" title="3.1 机械臂位置反解"></a>3.1 机械臂位置反解</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% 机械臂位置反解程序</span></span><br><span class="line">syms L1 L2 L3 q1 q2 q3 x y u</span><br><span class="line">eqn2 = L2*<span class="built_in">cos</span>(q2)+L3*<span class="built_in">cos</span>(q2+q3) == <span class="built_in">sqrt</span>(x^<span class="number">2</span>+y^<span class="number">2</span>);   <span class="comment">%利用x^2+y^2与q2,q3的关系式，简化运算</span></span><br><span class="line">eqn3 = L2*<span class="built_in">sin</span>(q2)+L3*<span class="built_in">sin</span>(q2+q3) == u;               <span class="comment">%此处u = z-L1</span></span><br><span class="line">[q2 ,q3] = solve(eqn2, eqn3 ,q2, q3)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-2-Multibody中机械臂位置反解模块"><a href="#3-2-Multibody中机械臂位置反解模块" class="headerlink" title="3.2 Multibody中机械臂位置反解模块"></a>3.2 Multibody中机械臂位置反解模块</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[q1,q2,q3]</span> = <span class="title">fcn</span><span class="params">(x,y,z)</span></span></span><br><span class="line"><span class="comment">%% 函数说明</span></span><br><span class="line"><span class="comment">% In: 目标点坐标x,y,z;</span></span><br><span class="line"><span class="comment">% Out: 各关节转角q1,q2,q3;</span></span><br><span class="line"><span class="comment">%% 结构参数</span></span><br><span class="line">L1 = <span class="number">0.3</span>;    <span class="comment">% 转动副2回转中心到转动副1的距离</span></span><br><span class="line">L2 = <span class="number">0.7</span>;    <span class="comment">% 转动副2、3之间的距离</span></span><br><span class="line">L3 = <span class="number">0.7</span>;    <span class="comment">% 转动副3回转中心到夹持端夹持中心的距离 </span></span><br><span class="line"><span class="comment">%% 运动学逆解</span></span><br><span class="line">u  = z-L1;</span><br><span class="line">q1 = -<span class="built_in">atan2</span>(x,y);   <span class="comment">%q1可以利用x和y来直接表示，从而简化方程</span></span><br><span class="line">q2 = <span class="number">2</span>*<span class="built_in">atan</span>((<span class="number">2</span>*L2*u - (L2^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) - (L3^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + (u^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + ((x^<span class="number">2</span> + y^<span class="number">2</span>)*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + (<span class="number">2</span>*L2*L3*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))/(<span class="number">2</span>*L2*(x^<span class="number">2</span> + y^<span class="number">2</span>)^(<span class="number">1</span>/<span class="number">2</span>) + L2^<span class="number">2</span> - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>));</span><br><span class="line">q3 = <span class="number">-2</span>*<span class="built_in">atan</span>(((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>)/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>));</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<blockquote>
-<p>如需相关资料，烦请邮箱联系。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>资料分享</category>
-      </categories>
-      <tags>
-        <tag>资料分享</tag>
-        <tag>机械资料</tag>
-        <tag>同济大学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>新的开始</title>
     <url>/2022/01/03/hello-world/</url>
     <content><![CDATA[<p><em>Hello World!</em></p>
@@ -294,7 +208,93 @@
 <blockquote>
 <p>微信：Mintha_2002</p>
 <p>QQ:	1626534461</p>
-<p>Email:<a href="mailto:&#x6d;&#105;&#110;&#x74;&#104;&#97;&#x32;&#x30;&#48;&#50;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;">&#x6d;&#105;&#110;&#x74;&#104;&#97;&#x32;&#x30;&#48;&#50;&#x40;&#x71;&#113;&#46;&#99;&#111;&#x6d;</a></p>
+<p>Email:<a href="mailto:&#109;&#105;&#x6e;&#116;&#x68;&#x61;&#50;&#48;&#x30;&#50;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;">&#109;&#105;&#x6e;&#116;&#x68;&#x61;&#50;&#48;&#x30;&#50;&#x40;&#x71;&#113;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>资料分享</category>
+      </categories>
+      <tags>
+        <tag>资料分享</tag>
+        <tag>机械资料</tag>
+        <tag>同济大学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用MATLAB对三自由度机械臂系统进行仿真</title>
+    <url>/2022/09/20/course-exercise-of-mechanical-principle/</url>
+    <content><![CDATA[<p>本篇文章主要讲述利用MATLAB Simulink中的Simscape Multibody（SimMechanics）模块对三自由度机械臂系统进行仿真。适用于同济大学机械原理课程设计课程（至少我那阵是做这个）。</p>
+<span id="more"></span>
+
+<h2 id="📓题目"><a href="#📓题目" class="headerlink" title="📓题目"></a>📓题目</h2><p>在 MATLAB &#x2F; Multibody 环境中，实现 3 自由度机械臂运动仿真。</p>
+<p>具体要求： </p>
+<ol>
+<li>机械臂的 3 个关节均为转动副。基础坐标系的方向如下图所示，但基础坐 标系的原点位置可以任意选定。<strong>初始时刻</strong>第 1 个转动副的轴线沿基础坐标系 z 轴，第 2、3 个转动副轴线均沿基础坐标系 x 轴。</li>
+</ol>
+<p><img src="/../images/cemp-question.png"></p>
+<ol start="2">
+<li><p>机械臂的杆件结构参数（包括杆件长度）自由设计；所建立的 Multibody 模型（可以在 Multibody 建模，也可以利用其它三维设计软件的 step 格式）要求 包含机械臂关节和末端执行器的<strong>细节结构</strong>。 </p>
+</li>
+<li><p>机械臂在初始时刻的位置姿态自行确定；经过 5 秒，机械臂末端执行器沿<strong>直线</strong>运动到目标点：x&#x3D;0.5m，y&#x3D;0.6m，z&#x3D;1.3m；5 秒之后，机械臂停留在目标点。</p>
+</li>
+</ol>
+<h2 id="1️⃣机械臂仿真内容介绍"><a href="#1️⃣机械臂仿真内容介绍" class="headerlink" title="1️⃣机械臂仿真内容介绍"></a>1️⃣机械臂仿真内容介绍</h2><p>本题要求为：机械臂在初始时刻姿态自行确定；经过5s机械臂末端执行器沿直线运动到目标点x&#x3D;0.5m、y&#x3D;0.6m、z&#x3D;1.3m，5s之后，机械臂停留在目标点。</p>
+<p>为实现上述要求，相关解决方式及主要模块功能如下：</p>
+<ol>
+<li>利用SolidWorks建立机械臂模型，并导出step格式，用File Solid模块导入到MATLAB中，其中，主要杆件的相关结构参数如下：</li>
+</ol>
+<center><em>表1  Multibody（SimMechanics）模型杆件相关结构参数</em></center>
+
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>转动副2回转中心到转动副1的距离L1</td>
+<td>0.3m</td>
+</tr>
+<tr>
+<td>转动副2、3之间的距离L2</td>
+<td>0.7m</td>
+</tr>
+<tr>
+<td>转动副3回转中心到夹持端夹持中心的距离L3</td>
+<td>0.7m</td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><p>利用坐标变换（Rigid Transform）模块调整各杆件位置，机械臂初始位置为x&#x3D;0，y&#x3D;1.4m，z&#x3D;0.3m；修改各转动副（Revolute Joint）模块参数，添加信号输入、输出端口，并连接PID模块以实现位置控制。</p>
+</li>
+<li><p>根据位置方程计算得位置反解函数，利用MATLAB Function模块编写运动学反解程序；利用Fcn模块、Clock时钟模块和Switch模块输入x，y，z与时钟变量u的关系，并实现运动状态的切换。</p>
+</li>
+<li><p>调试PID参数，以获得更加平稳、更接近直线轨迹的运动。</p>
+</li>
+</ol>
+<h2 id="2️⃣机械臂仿真相关图片"><a href="#2️⃣机械臂仿真相关图片" class="headerlink" title="2️⃣机械臂仿真相关图片"></a>2️⃣机械臂仿真相关图片</h2><p><img src="/../images/cemp-an1.png" alt="img"></p>
+<center><em>图1  Multibody（SimMechanics）模型图</em></center>
+
+<p><img src="/../images/cemp-an2.png" alt="image-20220920224403685"></p>
+<center><em>图2  机械臂初始时刻截图</em></center>
+
+<p><img src="/../images/cemp-an3.png" alt="image-20220920225138009"></p>
+<center><em>图3  机械臂运动过程中截图</em></center>
+
+<p><img src="/../images/cemp-an4.png" alt="image-20220920225257011"></p>
+<center><em>图4  机械臂到达目标点截图</em></center>
+
+<h2 id="3️⃣MATLAB程序片段"><a href="#3️⃣MATLAB程序片段" class="headerlink" title="3️⃣MATLAB程序片段"></a>3️⃣MATLAB程序片段</h2><h3 id="3-1-机械臂位置反解"><a href="#3-1-机械臂位置反解" class="headerlink" title="3.1 机械臂位置反解"></a>3.1 机械臂位置反解</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">%% 机械臂位置反解程序</span></span><br><span class="line">syms L1 L2 L3 q1 q2 q3 x y u</span><br><span class="line">eqn2 = L2*<span class="built_in">cos</span>(q2)+L3*<span class="built_in">cos</span>(q2+q3) == <span class="built_in">sqrt</span>(x^<span class="number">2</span>+y^<span class="number">2</span>);   <span class="comment">%利用x^2+y^2与q2,q3的关系式，简化运算</span></span><br><span class="line">eqn3 = L2*<span class="built_in">sin</span>(q2)+L3*<span class="built_in">sin</span>(q2+q3) == u;               <span class="comment">%此处u = z-L1</span></span><br><span class="line">[q2 ,q3] = solve(eqn2, eqn3 ,q2, q3)</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-Multibody中机械臂位置反解模块"><a href="#3-2-Multibody中机械臂位置反解模块" class="headerlink" title="3.2 Multibody中机械臂位置反解模块"></a>3.2 Multibody中机械臂位置反解模块</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[q1,q2,q3]</span> = <span class="title">fcn</span><span class="params">(x,y,z)</span></span></span><br><span class="line"><span class="comment">%% 函数说明</span></span><br><span class="line"><span class="comment">% In: 目标点坐标x,y,z;</span></span><br><span class="line"><span class="comment">% Out: 各关节转角q1,q2,q3;</span></span><br><span class="line"><span class="comment">%% 结构参数</span></span><br><span class="line">L1 = <span class="number">0.3</span>;    <span class="comment">% 转动副2回转中心到转动副1的距离</span></span><br><span class="line">L2 = <span class="number">0.7</span>;    <span class="comment">% 转动副2、3之间的距离</span></span><br><span class="line">L3 = <span class="number">0.7</span>;    <span class="comment">% 转动副3回转中心到夹持端夹持中心的距离 </span></span><br><span class="line"><span class="comment">%% 运动学逆解</span></span><br><span class="line">u  = z-L1;</span><br><span class="line">q1 = -<span class="built_in">atan2</span>(x,y);   <span class="comment">%q1可以利用x和y来直接表示，从而简化方程</span></span><br><span class="line">q2 = <span class="number">2</span>*<span class="built_in">atan</span>((<span class="number">2</span>*L2*u - (L2^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) - (L3^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + (u^<span class="number">2</span>*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + ((x^<span class="number">2</span> + y^<span class="number">2</span>)*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>) + (<span class="number">2</span>*L2*L3*((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>))/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))/(<span class="number">2</span>*L2*(x^<span class="number">2</span> + y^<span class="number">2</span>)^(<span class="number">1</span>/<span class="number">2</span>) + L2^<span class="number">2</span> - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>));</span><br><span class="line">q3 = <span class="number">-2</span>*<span class="built_in">atan</span>(((L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 + L3^<span class="number">2</span> - u^<span class="number">2</span> - x^<span class="number">2</span> - y^<span class="number">2</span>)*(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>))^(<span class="number">1</span>/<span class="number">2</span>)/(- L2^<span class="number">2</span> + <span class="number">2</span>*L2*L3 - L3^<span class="number">2</span> + u^<span class="number">2</span> + x^<span class="number">2</span> + y^<span class="number">2</span>));</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<blockquote>
+<p>如需相关资料，烦请邮箱联系。</p>
 </blockquote>
 ]]></content>
       <categories>
